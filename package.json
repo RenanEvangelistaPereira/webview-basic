@@ -1,0 +1,22 @@
+{
+  "name": "webview-basic",
+  "version": "1.0.0",
+  "description": "Criando um webview utilizando o Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ElectronJs",
+    "WebView",
+    "JavaScript",
+    "Multiplataform",
+    "App"
+  ],
+  "author": "Renan Evangelista Pereira",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^9.0.0"
+  }
+}
