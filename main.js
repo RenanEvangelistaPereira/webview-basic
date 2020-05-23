@@ -1,14 +1,22 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
 
 function createWindow () {
   // Cria uma janela de navegação.
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    focusable: true,
+    frame: false,
+    titleBarStyle: 'hidden',
+    resizable: false,
+    title: null,
+    alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true
     },
-    autoHideMenuBar: true
+    autoHideMenuBar: true,
+    menuStyle: 'hidden',
+    modal: true,
   })
 
   // and load the index.html of the app.
@@ -16,6 +24,25 @@ function createWindow () {
 
   // Open the DevTools.
   // win.webContents.openDevTools()
+
+  win.on('close', function (event) {
+
+    
+    let options  = {
+      buttons: ["Yes","No"],
+      message: "Do you really want to quit?",
+      title: "  "
+     }
+
+    var answer = dialog.showMessageBoxSync(win, options);
+
+    if(answer){
+        event.preventDefault();
+    }
+    
+
+  });
+
 }
 
 // This method will be called when Electron has finished
@@ -42,3 +69,4 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. Você também pode colocar eles em arquivos separados e requeridos-as aqui.
+
